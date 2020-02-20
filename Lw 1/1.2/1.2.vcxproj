@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{84BD21FE-DB57-43A4-9A21-726C1107715E}</ProjectGuid>
+    <ProjectGuid>{7BC0272D-7BE1-46D1-8ECC-E942CEF22E7C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>JohnsonTraber</RootNamespace>
+    <RootNamespace>My12</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -115,6 +115,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -152,6 +153,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,12 +163,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Initialization.cpp" />
-    <ClCompile Include="Johnson_Traber.cpp" />
+    <ClCompile Include="check_args.cpp" />
+    <ClCompile Include="initialization_vector.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="transposition.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Initialization.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="check_args.h" />
+    <ClInclude Include="initialization_vector.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="transposition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
