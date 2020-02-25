@@ -1,0 +1,16 @@
+Подсчёт затрат времени для порождения сочетаний:
+
+Release x64		k = 5	|	n = 10	| t = 0
+Debug x64		k = 5	|	n = 10	| t = 0.002
+
+Release x64		k = 5	|	n = 20	| t = 0.001
+Debug x64		k = 5	|	n = 20	| t = 0.043
+
+Release x64		k = 5	|	n = 25	| t = 0.002
+Debug x64		k = 5	|	n = 25	| t = 0.081
+
+Release x64		k = 5	|	n = 50	| t = 0.005
+Debug x64		k = 5	|	n = 50	| t = 2.462
+
+Release x64		k = 5	|	n = 100	| t = 0.378
+Debug x64		k = 5	|	n = 100	| t = 68.724
