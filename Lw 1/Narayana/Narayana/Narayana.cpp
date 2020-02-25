@@ -33,8 +33,8 @@ int main()
 	t.restart();
 	do
 	{
-		copy(v.begin(), v.end(), std::ostream_iterator<size_t>(cout, " "));
-		cout << endl;
+		//copy(v.begin(), v.end(), std::ostream_iterator<size_t>(cout, " "));
+		//cout << endl;
 	} while (next_permutation(v.begin(), v.end()));
 	double duration = t.elapsed();
 	cout << duration << endl;
