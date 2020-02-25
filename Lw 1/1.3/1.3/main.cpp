@@ -1,5 +1,4 @@
 ﻿#include <algorithm>
-#include <bitset>
 #include <iostream>
 #include <iterator>
 #include <numeric>
