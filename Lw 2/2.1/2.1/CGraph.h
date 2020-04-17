@@ -8,6 +8,8 @@ public:
 	Graph(std::istream& in);
 	void AdjacencyMatrixInitialization();
 	void UploadGraph(std::istream& in);
+	void DFS(size_t v, size_t p = -1);
+	void FindBridges();
 	void PrintAdjacencyMatrix();
 
 private:

@@ -17,10 +17,10 @@ Graph::Graph(istream& in)
 
 void Graph::AdjacencyMatrixInitialization()
 {
-	for (size_t i = 0; i < pointsCount; i++)
+	for (size_t i = 0; i < this->pointsCount; i++)
 	{
 		AdjacencyMatrix.push_back(vector<size_t>());
-		for (size_t j = 0; j < pointsCount; j++)
+		for (size_t j = 0; j < this->pointsCount; j++)
 		{
 			AdjacencyMatrix[i].push_back(0);
 		}
@@ -49,7 +49,7 @@ void Graph::UploadGraph(istream& in)
 	this->timer = 0;
 	this->used.assign(pointsCount, false);
 	this->fup.resize(pointsCount);
-	this->tin.reserve(pointsCount);
+	this->tin.resize(pointsCount);
 
 	AdjacencyMatrixInitialization();
 
@@ -68,7 +68,7 @@ void Graph::UploadGraph(istream& in)
 
 		++edgesCount;
 	}
-	
+
 	if (!in.eof())
 	{
 		throw CErrorMessage("ERROR: Input error");
@@ -77,5 +77,49 @@ void Graph::UploadGraph(istream& in)
 	if (edgesCount != this->edgesCount)
 	{
 		throw CErrorMessage("ERROR: Invalid edges count");
+	}
+}
+
+void Graph::DFS(size_t v, size_t p)
+{
+	used[v] = true;
+	tin[v] = fup[v] = timer++;
+
+	for (int i = 0; i < this->pointsCount; ++i)
+	{
+		if (AdjacencyMatrix[v][i] == 1)
+		{
+			int to = i;
+			if (to == p)
+			{
+				continue;
+			}
+	
+			if (used[to])
+			{
+				fup[v] = min(fup[v], tin[to]);
+			}
+			else
+			{
+				DFS(to, v);
+				fup[v] = min(fup[v], fup[to]);
+				
+				if (fup[to] > tin[v])
+				{
+					cout << "bridge: (" << ++v << " , " << ++to << ")\n";
+				}
+			}
+		}
+	}
+}
+
+void Graph::FindBridges()
+{
+	for (size_t i = 0; i < this->pointsCount; ++i)
+	{
+		if (!used[i])
+		{
+			DFS(i);
+		}
 	}
 }
