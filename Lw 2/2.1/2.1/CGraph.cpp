@@ -115,11 +115,5 @@ void Graph::DFS(size_t v, size_t p)
 
 void Graph::FindBridges()
 {
-	for (size_t i = 0; i < this->pointsCount; ++i)
-	{
-		if (!used[i])
-		{
-			DFS(i);
-		}
-	}
+	DFS(0);
 }

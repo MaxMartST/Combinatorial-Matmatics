@@ -43,5 +43,6 @@
     <Text Include="input.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="input_1.txt" />
   </ItemGroup>
 </Project>
