@@ -1,7 +1,7 @@
 #pragma once
 #include <fstream>
-#include <vector>
 #include <map>
+#include <vector>
 
 class CGraph
 {
@@ -12,19 +12,26 @@ public:
 	void AddBridges(int v, int to);
 	void AddPoint(int v);
 	void DFS(int v, int p = -1);
-	void FindBridges();
-	void PrintBridgesAndPoints();
+	void FindPointsAndBridges();
+	void PrintPointsAndBridges();
 
 private:
 	struct Bridge
 	{
+		Bridge() = default;
+		Bridge(int v, int to)
+		{
+			start = v;
+			end = to;
+		}
+
 		int start;
 		int end;
 	};
 
 	int timer;
-	int edgesCount;
-	int pointsCount;
+	size_t edgesCount;
+	size_t pointsCount;
 
 	std::vector<int> tin, fup;
 	std::vector<bool> used;

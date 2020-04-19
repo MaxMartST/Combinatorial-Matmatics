@@ -34,8 +34,8 @@ int main(int argc, char* argv[])
 	{
 		file.open(*args, ios_base::in);
 		CGraph graph(file);
-		graph.FindBridges();
-		graph.PrintBridgesAndPoints();
+		graph.FindPointsAndBridges();
+		graph.PrintPointsAndBridges();
 	}
 	catch (const ios_base::failure& e)
 	{

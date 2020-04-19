@@ -2,6 +2,7 @@
 #include "CErrorMessage.h"
 #include "GetVectorFromString.h"
 
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <queue>
@@ -38,7 +39,7 @@ void CGraph::UploadGraph(istream& in)
 			throw CErrorMessage("ERROR: One of the subsets is missing");
 		}
 
-		if (!(params[0] <= CGraph::MAX_POINTS_COUNT && params[1] <= CGraph::MAX_EDGES_COUNT) && params[0] > 0 && params[0] >= 0)
+		if (!(params[0] <= CGraph::MAX_POINTS_COUNT && params[1] <= CGraph::MAX_EDGES_COUNT))
 		{
 			throw CErrorMessage("ERROR: Intersection of the allowable range");
 		}
@@ -83,16 +84,19 @@ void CGraph::UploadGraph(istream& in)
 
 void CGraph::AddBridges(int v, int to)
 {
-	Bridge bridge;
-	bridge.start = v;
-	bridge.end = to;
+	Bridge bridge(v, to);
 
 	junctionBridges.push_back(bridge);
 }
 
 void CGraph::AddPoint(int v)
 {
-	junctionPoints.push_back(v);
+	auto it = find(junctionPoints.begin(), junctionPoints.end(), v);
+
+	if (it == junctionPoints.end())
+	{
+		junctionPoints.push_back(v);
+	}
 }
 
 void CGraph::DFS(int v, int p)
@@ -106,6 +110,7 @@ void CGraph::DFS(int v, int p)
 		if (AdjacencyMatrix[v][i] == 1)
 		{
 			int to = i;
+
 			if (to == p)
 			{
 				continue;
@@ -117,8 +122,10 @@ void CGraph::DFS(int v, int p)
 			}
 			else
 			{
+				++children;
 				DFS(to, v);
 				fup[v] = min(fup[v], fup[to]);
+
 				if (fup[to] > tin[v])
 				{
 					AddBridges(v, to);
@@ -128,37 +135,28 @@ void CGraph::DFS(int v, int p)
 				{
 					AddPoint(v);
 				}
-
-				++children;
 			}
 		}
 	}
-	//if (p == -1 && children > 1)
-	//{
-	//	AddPoint(v);
-	//}
-}
-
-void CGraph::FindBridges()
-{
-	DFS(0);
-}
-
-void CGraph::PrintBridgesAndPoints()
-{
-	if (junctionBridges.empty())
+	if (p == -1 && children > 1)
 	{
-		cout << "There are no bridges in the graph" << endl;
+		AddPoint(v);
 	}
-	else
+}
+
+void CGraph::FindPointsAndBridges()
+{
+	for (int i = 0; i < this->pointsCount; ++i)
 	{
-		cout << "Bridges:" << endl;
-		for (auto value : junctionBridges)
+		if (!used[i])
 		{
-			cout << ++value.start << " " << ++value.end << endl;
+			DFS(i);
 		}
 	}
+}
 
+void CGraph::PrintPointsAndBridges()
+{
 	if (junctionPoints.empty())
 	{
 		cout << "There are no points in the graph" << endl;
@@ -170,6 +168,18 @@ void CGraph::PrintBridgesAndPoints()
 		{
 			cout << ++value << " ";
 		}
+	}
 
+	if (junctionBridges.empty())
+	{
+		cout << "\nThere are no bridges in the graph" << endl;
+	}
+	else
+	{
+		cout << "\nBridges:" << endl;
+		for (auto value : junctionBridges)
+		{
+			cout << ++value.start << " " << ++value.end << endl;
+		}
 	}
 }
