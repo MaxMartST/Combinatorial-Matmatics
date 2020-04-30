@@ -1,0 +1,15 @@
+﻿'2.2.exe' (Win32): Loaded 'C:\IPS\My repos\Combinatorial-Matmatics\Lw 2\x64\Debug\2.2.exe'. Symbols loaded.
+'2.2.exe' (Win32): Loaded 'C:\Windows\System32\ntdll.dll'. Cannot find or open the PDB file.
+'2.2.exe' (Win32): Loaded 'C:\Windows\System32\kernel32.dll'. Cannot find or open the PDB file.
+'2.2.exe' (Win32): Loaded 'C:\Windows\System32\KernelBase.dll'. Cannot find or open the PDB file.
+'2.2.exe' (Win32): Loaded 'C:\Windows\System32\msvcp140d.dll'. Cannot find or open the PDB file.
+'2.2.exe' (Win32): Loaded 'C:\Windows\System32\vcruntime140d.dll'. Cannot find or open the PDB file.
+'2.2.exe' (Win32): Loaded 'C:\Windows\System32\ucrtbased.dll'. Cannot find or open the PDB file.
+'2.2.exe' (Win32): Loaded 'C:\Windows\System32\api-ms-win-core-localization-l1-2-0.dll'. Cannot find or open the PDB file.
+'2.2.exe' (Win32): Loaded 'C:\Windows\System32\api-ms-win-core-processthreads-l1-1-1.dll'. Cannot find or open the PDB file.
+'2.2.exe' (Win32): Loaded 'C:\Windows\System32\api-ms-win-core-file-l1-2-0.dll'. Cannot find or open the PDB file.
+'2.2.exe' (Win32): Loaded 'C:\Windows\System32\api-ms-win-core-timezone-l1-1-0.dll'. Cannot find or open the PDB file.
+'2.2.exe' (Win32): Loaded 'C:\Windows\System32\api-ms-win-core-file-l2-1-0.dll'. Cannot find or open the PDB file.
+'2.2.exe' (Win32): Loaded 'C:\Windows\System32\api-ms-win-core-synch-l1-2-0.dll'. Cannot find or open the PDB file.
+The thread 0x11b8 has exited with code 0 (0x0).
+The program '[7532] 2.2.exe' has exited with code 0 (0x0).
