@@ -28,7 +28,7 @@ namespace dt {
 		CDelaunay(const CDelaunay&) = delete;
 		CDelaunay(CDelaunay&&) = delete;
 
-		const std::vector<TriangleType>& Triangulate(std::vector<VertexType> &vertices);
+		void Triangulate(std::vector<VertexType> &vertices);
 		const std::vector<TriangleType>& GetTriangles() const;
 		const std::vector<EdgeType>& GetEdges() const;
 		const std::vector<VertexType>& GetVertices() const;

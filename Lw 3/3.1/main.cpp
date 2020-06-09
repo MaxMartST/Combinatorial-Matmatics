@@ -32,10 +32,13 @@ int main(int argc, char * argv[])
 		return 1;
 	}
 
-	std::vector<dt::Vertex<double>> points = ph.GetVertex();
+	vector<dt::Vertex<double>> points = ph.GetVertex();
+
 	dt::CDelaunay<double> triangulation;
-	const std::vector<dt::Triangle<double>> triangles = triangulation.Triangulate(points);
-	cout << triangles.size() << " triangles generated\n";
+	triangulation.Triangulate(points);
+
+	vector<dt::Triangle<double>> triangles = triangulation.GetTriangles();
+	cout << "Triangles generated: " << triangles.size() << endl;
 
 	if (triangles.size() != 0)
 	{

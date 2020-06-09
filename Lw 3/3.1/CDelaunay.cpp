@@ -3,7 +3,7 @@
 namespace dt {
 
 	template<typename T>
-	const std::vector<typename CDelaunay<T>::TriangleType>& CDelaunay<T>::Triangulate(std::vector<VertexType> &vertices)
+	void CDelaunay<T>::Triangulate(std::vector<VertexType>& vertices)
 	{
 		_vertices = vertices;
 
@@ -47,7 +47,8 @@ namespace dt {
 				}
 			}
 
-			_triangles.erase(std::remove_if(begin(_triangles), end(_triangles), [](TriangleType &t) { return t.isBad;}), end(_triangles));
+			_triangles.erase(std::remove_if(begin(_triangles), end(_triangles), [](TriangleType &t) 
+				{ return t.isBad;}), end(_triangles));
 
 			for (auto e1 = begin(polygon); e1 != end(polygon); ++e1)
 			{
@@ -61,9 +62,8 @@ namespace dt {
 				}
 			}
 
-			polygon.erase(std::remove_if(begin(polygon), end(polygon), [](EdgeType &e) {
-				return e.isBad;
-			}), end(polygon));
+			polygon.erase(std::remove_if(begin(polygon), end(polygon), [](EdgeType &e) 
+				{return e.isBad;}), end(polygon));
 
 			for (const auto e : polygon)
 			{
@@ -71,9 +71,8 @@ namespace dt {
 			}
 		}
 
-		_triangles.erase(std::remove_if(begin(_triangles), end(_triangles), [p1, p2, p3](TriangleType &t) {
-			return t.containsVertex(p1) || t.containsVertex(p2) || t.containsVertex(p3);
-		}), end(_triangles));
+		_triangles.erase(std::remove_if(begin(_triangles), end(_triangles), [p1, p2, p3](TriangleType &t) 
+			{return t.containsVertex(p1) || t.containsVertex(p2) || t.containsVertex(p3);}), end(_triangles));
 
 		for (const auto t : _triangles)
 		{
@@ -81,8 +80,6 @@ namespace dt {
 			_edges.push_back(Edge<T>{*t.b, *t.c});
 			_edges.push_back(Edge<T>{*t.c, *t.a});
 		}
-
-		return _triangles;
 	}
 
 	template<typename T>
